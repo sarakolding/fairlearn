@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, Callable, Literal
+from typing import Any, Callable, Dict, Literal, Union
 
 import numpy as np
+from numpy.typing import ArrayLike
 import pandas as pd
 from sklearn.utils import check_consistent_length
 
@@ -226,10 +227,17 @@ class MetricFrame:
         self,
         *,
         metrics: Callable | dict[str, Callable],
-        y_true,
-        y_pred,
-        sensitive_features,
-        control_features=None,
+        y_true: ArrayLike,
+        y_pred: ArrayLike,
+        sensitive_features: Union[
+            ArrayLike,
+            Dict[str, ArrayLike],
+        ],
+        control_features: Union[
+            ArrayLike,
+            Dict[str, ArrayLike],
+            None,
+        ] = None,
         sample_params: dict[str, Any] | dict[str, dict[str, Any]] | None = None,
         n_boot: int | None = None,
         ci_quantiles: list[float] | None = None,
