@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, Callable, Dict, Literal, Union
+from typing import Any, Callable, Literal, Union
 
 import numpy as np
 from numpy.typing import ArrayLike
@@ -231,11 +231,11 @@ class MetricFrame:
         y_pred: ArrayLike,
         sensitive_features: Union[
             ArrayLike,
-            Dict[str, ArrayLike],
+            dict[str, ArrayLike],
         ],
         control_features: Union[
             ArrayLike,
-            Dict[str, ArrayLike],
+            dict[str, ArrayLike],
             None,
         ] = None,
         sample_params: dict[str, Any] | dict[str, dict[str, Any]] | None = None,
